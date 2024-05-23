@@ -1,0 +1,49 @@
+let nftCollection = [];
+
+function mintNFT(name, description, image) {
+    let newNFT = {
+        name: name,
+        description: description,
+        image: image
+    };
+    nftCollection.push(newNFT);
+    console.log("You've minted a new NFT: " + name);
+}
+
+function listNFTs() {
+    console.log("Your NFT Collection:");
+    nftCollection.forEach(nft => {
+        console.log("Name: " + nft.name);
+        console.log("Description: " + nft.description);
+        console.log("Image: " + nft.image);
+        console.log("--------------------");
+    });
+}
+
+function getTotalSupply() {
+    return nftCollection.length;
+}
+
+function playGame() {
+    console.log("Welcome to the NFT Collection Game!");
+    console.log("Type 'mint' to mint a new NFT or 'list' to see your collection. Type 'exit' to quit.");
+
+    const input = prompt();
+    
+    if (input === 'mint') {
+        mintNFT("New NFT", "Description of a new NFT", "image.jpg");
+    } else if (input === 'list') {
+        listNFTs();
+    } else if (input === 'exit') {
+        console.log("Thanks for playing!");
+        return;
+    } else {
+        console.log("Invalid input. Type 'mint', 'list', or 'exit'.");
+    }
+
+    // Call playGame() again to keep the game running
+    playGame();
+}
+
+// Start the game
+playGame();
